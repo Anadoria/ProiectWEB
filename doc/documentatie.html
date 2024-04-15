@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WeGa (Web Gardening)</title>
+
+    <link rel="stylesheet" href="scholarly.css" />
+</head>
+
+<header>
+    <h1>WeGa (Web Gardening)</h1>
+</header>
+
+<body>
+
+    <div class=" content-in-page">
+        <h2>Content</h2>
+        <ol>
+            <li><a href="#introduction">Introducere</a>
+                <ul dir="auto">
+                    <li> 1.1 <a href="#purpose"> Scop </a></li>
+                    <li> 1.2 <a href="#conventions"> Conventii tipografice </a></li>
+                    <li> 1.3 <a href="#audience"> Publicul vizat si sugestii de lectura </a></li>
+                    <li> 1.4 <a href="#scope"> Domeniul produsului </a></li>
+                    <li> 1.5 <a href="#references"> Referinte </a></li>
+                </ul>
+            </li>
+            <li><a href="#descrierea">Descriere</a>
+                <ul dir="auto">
+                    <li> 2.1 <a href="#perspectiva"> Perspectiva produsului </a></li>
+                    <li> 2.2 <a href="#functiile"> Functiile produsului </a></li>
+                    <li> 2.3 <a href="#clasele"> Clasele si carcteristicile utilizatorului </a></li>
+                    <li> 2.4 <a href="#mediu"> Mediul de operare </a></li>
+                    <li> 2.5 <a href="#constrangeri"> Constrangeri de implementare si design </a></li>
+                </ul>
+            </li>
+            <li><a href="#cerinte">Cerinte de interfata externa</a>
+                <ul dir="auto">
+                    <li> 3.1 <a href="#interfete"> Interfete cu utilizatorul </a></li>
+                    <li> 3.2 <a href="#interfeteHard"> Interfete hardware </a></li>
+                    <li> 3.3 <a href="#interfeteSoft"> Interfete software </a></li>
+                    <li> 3.4 <a href="#interfeteComm"> Interfete de comunicatii </a></li>
+                </ul>
+            </li>
+            <li><a href="#caracteristici">Caracteristicile proiectului</a>
+                <ul dir="auto">
+                    <li> 4.1 <a href="#paginaPrincipala"> Pagina Principală </a></li>
+                    <li> 4.2 <a href="#contact"> Pagina de Contactare </a></li>
+                    <li> 4.3 <a href="#speciiFlori"> Pagina de Specii de Flori </a></li>
+                    <li> 4.4 <a href="#loginPage"> Pagina de Login </a></li>
+                    <li> 4.5 <a href="#registerPage"> Pagina de Sign up </a></li>
+                    <li> 4.6 <a href="#culturi"> Pagina de Culturi </a></li>
+                </ul>
+            </li>
+            <li><a href="#contributii">Contributii</a>
+            </li>
+        </ol>
+        <dl>
+            <dt>Autori:</dt>
+            <dd>
+                Arhire Bianca-Anemona <br>
+                Pipa Anadoria <br>
+            </dd>
+            <dt>Sursa proiect:</dt>
+            <dd>
+                <a href="https://github.com/Anadoria/ProiectWEB.git">GitHub Repository</a>
+            </dd>
+        </dl>
+    </div>
+    <section id="introduction" role="doc-introduction">
+        <h2>1. Introducere</h2>
+        <section id="purpose" role="doc-purpose">
+            <h3>1.1 Scopul documentului</h3>
+            <p>
+                Scopul acestui document este să prezinte detaliile aplicației 'Web Gardening'.
+                Acesta va cuprinde toate amănuntele legate de caracteristicile aplicației, interfața și modul în care
+                trebuie să functioneze.
+                Acest document va fi utilizat pentru a înțelege modul de utilizare a aplicației de persoanele care
+                folosesc site-ul pentru prima dată.
+            </p>
+        </section>
+        <section id="conventions" role="doc-conventions">
+            <h3>1.2 Convenții tipografice</h3>
+            <p>
+                Fontul utilizat în acest document este sans-serif, cu dimensiunea 16px.
+                În cazul în care dorim să evidențiem anumite elemente, vom folosi <b>bold</b>.
+            </p>
+        </section>
+        <section id="audience" role="doc-audience">
+            <h3>1.3 Publicul vizat și sugestii de lectură </h3>
+            <p>
+                Scopul acestui document este de a oferi o expunere detaliată a funcționalităților aplicației și a
+                modului în
+                care acestea sunt implementate. De asemenea, se vor prezenta paginile principale ale aplicației și
+                tehnologiile utilizate.
+                Pagina este adresată utilizatorilor online, mai exact pasionaților de grădinărit și de flori în general.
+            </p>
+        </section>
+        <section id="scope" role="doc-scope">
+            <h3>1.4 Scopul produsului </h3>
+            <p>
+                Scopul proiectului este să dezvolte o aplicație web care să servească ca un asistent digital pentru cultivarea și vânzarea florilor
+                de primăvară, precum lalelele, zambilele și narcisele. Această aplicație este utilă atât pentru comercianți, care pot gestiona mai 
+                multe culturi concomitent, cât și pentru clienți interesați de achiziționarea de flori.
+
+                Comerciantul poate utiliza aplicația pentru a monitoriza și gestiona condițiile de creștere a plantelor, primind date de 
+                la senzori care măsoară umiditatea solului, temperatura ambientală și alte parametri relevanți. De asemenea, fluxul de imagini
+                din culturi poate oferi informații importante despre stadiul de dezvoltare al plantelor.
+
+                Pentru clienți interesați de achiziționarea de flori, aplicația oferă posibilitatea de a-și exprima interesul pentru anumite
+                flori. Când florile de interes sunt gata pentru achiziție, clienții sunt notificați prin mesaje prin e-mail și notificări în 
+                cadrul unui browser web.
+
+                Astfel, aplicația poate fi folosită de către comercianți pentru gestionarea eficientă a culturilor de flori și optimizarea procesului 
+                de vânzare, precum și de către clienți pentru a găsi și achiziționa flori proaspete și sănătoase. Este important de menționat că 
+                aplicația este destinată în principal utilizării comerciale, însă poate fi accesată și de către publicul larg interesat de 
+                achiziționarea de flori de primăvară.
+            </p>
+        </section>
+    </section>
+    <section id="descrierea" role="doc-descrierea">
+        <h2>2. Descriere</h2>
+        <section id="perspectiva" role="doc-perspectiva">
+            <h3>2.1 Perspectiva produsului</h3>
+            <p>
+                Cu pagina noastră WeGa (Web Gardening), ne propunem să valorificăm facilitățile mediului online într-un mod accesibil
+                și ușor de utilizat pentru vizitatori. Prin intermediul marcajelor sugestive și a unei interfețe intuitive,
+                pagina noastră își propune să ofere o experiență plăcută și eficientă utilizatorilor.
+
+                Rolul principal al aplicației WeGa este de a atrage publicul să contribuie la îngrijirea plantelor și la promovarea unui nou 
+                hobby prin intermediul activităților de grădinărit online. Prin furnizarea de informații utile și sfaturi practice, ne propunem 
+                să inspirăm și să încurajăm utilizatorii să exploreze și să se implice în procesul de grădinărit, indiferent de nivelul lor 
+                de experiență.
+            </p>
+        </section>
+        <section id="functiile" role="doc-functiile">
+            <h3>2.2 Funcțiile produsului</h3>
+            <p>Pagina principală este una de întâmpinare a utilizatorului introducându-l in aplicatia propriuzisă si familiarizându-l cu 
+               funcționalitățile pe care le are la dispoziție.  
+            </p>
+            <p> Creearea contului presupune introducerea unei adrese de email, a unui număr de telefon si a unei parole, urmând ca restul datelor
+                personale sa poată fi editate in pagina profilului utilizatorului.
+            </p>
+            <p> Toate functionalitățile sunt disponibile oricărui utilizator, fără a conta existența unui cont pe platformă, astfel încât
+                să fie ușor și convenabil de accesat pentru toată lumea.Cu toate acestea, crearea unui cont este necesară în procesul de achiziționare
+                a unei plante, astfel încât userul sa fie eficient notificat prin email de datele comenzii și disponibilitatea produsului.
+            </p>
+            Punctele de interes sunt galeriile de flori si culturi. Galeria de flori are scopul de a familiariza utilizatorul cu tipul respectiv
+            de floare și de a oferii indicații referitoare la creșterea și ingrijirea florii. Galeria de culturi indică în timp real stagiul de creștere
+            al fiecarei plantații de flori ,deținută de admin. În acest fel utilizatorul este pus la curent zilnic cu procesul de creștere pentru a 
+            afla momentul oportun de a plasa o comandă sau de a estima când va fi gata comanda. 
+
+            </p>
+
+        <section id="clasele" role="doc-clasele">
+            <h3>2.3 Clasele și caracteristicile utilizatorului</h3>
+            <p>
+                Cele 3 tipuri de utilizator care vor interacționa cu aplicația sunt: admin, vizitator, utilizator logat.
+                Vizitatorul va putea accesa pagina principală a aplicației și poate vedea informații generale despre
+                flori, dar și informații exacte despre culturile în creștere. Va putea vizualiza
+                datele
+                transmise de către senzori în timp real.
+                Un utilizator logat va avea aceleași drepturi pe care le are un simplu vizitator. În plus, va putea primi
+                email-uri cu alerte despre culturile de flori gata de a fi puse în comerț și datele comenzilor proprii. De asemenea, își va putea gestiona profilul.
+                Adminul este practic un utilizator autorizat să poată gestiona baza de date a aplicației, să actualizeze
+                sau
+                să adauge date despre plantațiile deținute. Va putea gestiona sistemul de irigații din pagina "Culturi" pentru a putea
+                ușura procesul de îngrijire la distanță.
+            </p>
+        </section>
+        <section id="mediu" role="doc-mediu">
+            <h3>2.4 Mediul de operare</h3>
+            <p>
+                Aplicația poate fi accesată din browser, atât desktop, cât și mobile, având un design responsive. Pentru
+                stocarea datelor necesare aplicației folosim o bază de date (SQLite).
+            </p>
+        </section>
+        <section id="constrangeri" role="doc-constrangeri">
+            <h3>2.5 Constrângeri de implementare și design</h3>
+            <p>
+                O alegere inspirată este folosirea unei palete de culori formată din verde si roz (și varianțe ale
+                acestora), îmbinându-se armonios componentele în pagină.
+                De asemenea, utilizarea fontului sans-serif Arial este o
+                alegere potrivită pentru un design minimalist. Secțiunile sunt poziționate pe linii și coloane, pagina
+                fiind
+                responsive pentru o experiență cât mai bună indiferent de dispozitivul ales; în varianta
+                mobile elementele sunt poziționate unele sub altele.
+            </p>
+        </section>
+    </section>
+
+    <section id="cerinte" role="doc-cerinte">
+        <h2>3. Cerințe pentru interfață externă</h2>
+        <section id="interfete" role="doc-interfete">
+            <h3>3.1 Interfețe cu utilizatorul</h3>
+            <p>
+                În cadrul aplicației, utilizatorii vor putea:
+            <ul>
+                <li>să-și creeze un cont/ să se conecteze apăsând butoanele din header și introducând informații în
+                    câmpurile aferente,
+                </li>
+                <li>să acceseze paginile Acasă, Contact, Specii Flori și Culturi 
+                </li>
+                <li>să trimită un email direct către admin din pagina Contact,
+                </li>
+                <li>să vizualizeze toate speciile de flori disponibile si sa afle detalii despre acestea,
+                </li>
+                <li>să vizualizeze in timp real culturile și condițiile lor de creștere.
+                </li>
+            </ul>
+
+        </section>
+
+        <section id="caracteristici" role="doc-caracteristici">
+            <h2>4. Caracteristicile proiectului</h2>
+
+            <li> 4.1 <a href="#paginaPrincipala"> Pagina Principală </a></li>
+            <li> 4.2 <a href="#contact"> Pagina de Contactare </a></li>
+            <li> 4.3 <a href="#speciiFlori"> Pagina de Specii de Flori </a></li>
+            <li> 4.4 <a href="#loginPage"> Pagina de Login </a></li>
+            <li> 4.5 <a href="#registerPage"> Pagina de Sign up </a></li>
+            <li> 4.5 <a href="#culturi"> Pagina de Culturi </a></li>
+
+            <section id="paginaPrincipala" role="doc-paginaPrincipala">
+                <h3>4.1 Pagina Principală </h3>
+                <p>
+                    Pagina principală este o pagină ce conține informații despre stie in general. De asemenea, pe
+                    pagina principală se află un meniu cu opțiuni de navigare și butoane de
+                    login/register.
+                </p>
+            </section>
+
+            <section id="Contact" role="doc-contact">
+                <h3>4.2 Pagina de Contactare </h3>
+                <p>
+                   Pagina de Contactare are rol de a ușura procesul de comandare și comunicare directă cu comerciantul. Pentru a trimite un mesaj
+                   utilizatorul este nevoit să-și introducă datele personale de contact și mesajul propriuzis. Aceste mesaje vor fi salvate in baza de 
+                   date și trimise sub formă de notificari către admin. 
+                </p>
+            </section>
+
+            <section id="speciiFlori" role="doc-speciiFlori">
+                <h3>4.3 Pagina de Specii de Flori</h3>
+                <p>
+                    Pagina de Specii de Flori are rolul de a oferii informații legate de speciile de flori disponibile. Este o pagina informativă
+                    ce oferă indicații despre creșterea și întreținerea tipului respectiv de floare. Scopul acestei pagini este de a furniza utilizatorilor
+                    toate datele necesare înaintea sau după achiziționarea unei plante. Pentru mai multe informații se poate mereu accesa pagina de contactare.
+                </p>
+            </section>
+
+            <section id="loginPage" role="doc-loginPage">
+                <h3>4.4 Pagina de Login</h3>
+                <p>
+                    Pagina de Login este o pagină ce conține un formular de login, cu posibilitatea de a introduce
+                    email-ul și parola pentru a se autentifica în aplicație. De asemenea, conține și un buton de
+                    sign up, pentru a putea crea un cont nou, dar și un buton de resetare a parolei, în cazul în care
+                    utilizatorul a uitat-o. În cazul în care utilizatorul introduce datele de login
+                    greșite, acesta va primi un mesaj de eroare pentru a încerca din nou.
+                </p>
+            </section>
+
+            <section id="registerPage" role="doc-registerPage">
+                <h3>4.5 Pagina de Sign Up</h3>
+                <p>
+                    Pagina de Sign Up este o pagină ce conține un formular de înregistrare, cu posibilitatea de a
+                    introduce username-ul, adresa de email și parola pentru a crea un cont
+                    nou în aplicație. De asemenea, conține și un buton de login, pentru a putea accesa contul nou creat.
+                    În cazul în care utilizatorul introduce datele de înregistrare greșite, acesta va primi un mesaj de
+                    eroare pentru a încerca din nou.
+                </p>
+            </section>
+
+            <section id="culturi" role="doc-culturi">
+                <h3>4.6 Pagina de Culturi </h3>
+                <p>
+                    Pagina de Culturi ofera date in timp real despre condițiile de creștere a florilor. Pe langa un flux de imagini se transmit si 
+                    date in privința temperaturii ambientale și a umidității solului, valori transmise de către senzori. Orice utilizator poate vedea 
+                    aceste date, însă doar adminul va avea acces la un buton ce trimite la reglarea sistemului de irigații. Adminul primeste notificări
+                    la fiecare valoare anormală pentru a se asigura de bunastare a culturilor chiar și de la distanță.
+                </p>
+            </section>
+        </section>
+
+        <section id="contributii" role="doc-contributii">
+            <h2>5. Contributii</h2>
+            <section>
+                
+            </section>
+        </section>
+</body>
+
+</html>
