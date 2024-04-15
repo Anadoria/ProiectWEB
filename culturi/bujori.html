@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bujori</title>
+  <link rel="stylesheet" href="flower_style.css">
+</head>
+<body>
+
+  <header>
+    <div class="container">
+        <h1>WebGardening</h1>
+        <nav>
+            <ul>
+                <li><a href="../Acasa.html">Acasă</a></li>
+                <li><a href="../specii_flori.html">Specii Flori</a></li>
+                <li><a href="../contact.html">Contact</a></li>
+                <li><a href="#">Admin</a></li>
+                <li><a href="../login/login.html">Conectare</a></li>
+                <li><a href="culturi.html">Culturi</a></li>
+            </ul>
+        </nav>
+    </div>
+  </header>
+
+  <img src="bujori.jpg" alt="bujori" class="flower-image">
+  
+  <div class="containerF">
+    <div class="flower-info">
+      <h1>Bujori</h1>
+      <p>Umiditatea solului: 50%</p>
+      <p>Temperatura ambientală: 15°C</p>
+      <form action="irrigate.php" method="post">
+        <input type="hidden" name="flower" value="bujori">
+        <button type="submit">Udă florile</button>
+      </form>
+    </div>
+  </div>
+
+</body>
+</html>

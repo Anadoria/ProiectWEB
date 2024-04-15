@@ -1,0 +1,81 @@
+h2 {
+    align-items: center;
+    font: bolder;
+    font-family: Arial, sans-serif;
+    color: #FA92B1;
+  }
+
+  body{
+    background-color: #FEFFE2;
+  }
+  
+  .flowers {
+    list-style: none;
+    padding: 0;
+    display: flex; /* Arrange buttons horizontally */
+    justify-content: center; /* Center buttons horizontally */
+    flex-wrap: wrap; /* Allow wrapping to next line if needed */
+    margin: 0 auto; /* Center entire flower section horizontally */
+  }
+  
+  .flowers li {
+    margin: 10px;
+    position: relative; /* Needed for flower name positioning */
+    background-color: rgba(128, 128, 128, 0.1); /* Initial gray background */
+    /* Optional: Add a subtle border for better separation */
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: 5px; /* Add rounded corners for a more polished look */
+    transition: background-color 0.3s ease-in-out; /* Smooth transition for background color on hover */
+  }
+  
+  .flowers li:hover {
+    background-color: transparent; /* Remove gray background on hover */
+  }
+  
+  .flowers li a {
+    text-decoration: none;
+    color: black;
+    display: block; /* Makes entire button clickable */
+  }
+  
+  /* Flower Images (assuming class) */
+  .flower-image {
+    width: 400px; /* Adjust width for two buttons per row */
+    height: 200px; /* Adjust height as needed */
+    display: block;
+    /* Maintain aspect ratio to prevent distortion (important!) */
+    object-fit: cover;
+    opacity: 0.7; /* Initial reduced opacity */
+    transition: opacity 0.3s ease-in-out; /* Smooth transition for image opacity on hover */
+  }
+  
+  .flowers li:hover .flower-image {
+    opacity: 1; /* Full opacity on hover */
+  }
+  
+  /* Responsive Image Sizing (optional) */
+  @media only screen and (max-width: 768px) {
+    /* Adjust image width for smaller screens */
+    .flower-image {
+      width: 300px; /* Example for smaller screens */
+    }
+  }
+  
+  /* Flower Name Styling */
+  .flower-name {
+    font-family: Ubuntu, sans-serif;
+    position: absolute; /* Position flower name on top of image */
+    bottom: 10px; /* Adjust vertical position */
+    left: 10px; /* Adjust horizontal position */
+    color: white; /* Text color */
+    font-weight: bold; /* Text weight */
+    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+    padding: 5px; /* Padding around text */
+    opacity: 0.8; /* Initial reduced opacity */
+    transition: opacity 0.3s ease-in-out; /* Hover animation */
+  }
+  
+
+.flowers li:hover .flower-name {
+  opacity: 1; /* Full opacity on hover */
+}
