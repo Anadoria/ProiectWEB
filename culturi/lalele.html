@@ -29,14 +29,33 @@
   <div class="containerF">
     <div class="flower-info">
       <h1>Lalele</h1>
-      <p>Umiditatea solului: 50%</p>
-      <p>Temperatura ambientală: 15°C</p>
+      <p>Umiditatea solului: <span id="humidity">-</span></p>
+      <p>Temperatura ambientală: <span id="temperature">-</span></p>
       <form action="irrigate.php" method="post">
         <input type="hidden" name="flower" value="lalele">
         <button type="submit">Udă florile</button>
       </form>
     </div>
   </div>
+
+
+  <script>
+    // Funcție pentru actualizarea valorilor de umiditate și temperatură
+    function updateValues() {
+      fetch('update_values.php')
+        .then(response => response.json())
+        .then(data => {
+          document.getElementById("humidity").textContent = data.humidity + "%";
+          document.getElementById("temperature").textContent = data.temperature + "°C";
+        });
+    }
+
+    // Actualizarea valorilor inițiale
+    updateValues();
+
+    // Actualizarea valorilor o dată la fiecare minut
+    setInterval(updateValues, 60000); // 60000 milisecunde = 1 minut
+  </script>
   
 </body>
 </html>

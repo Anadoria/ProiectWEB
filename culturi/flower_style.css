@@ -65,6 +65,19 @@ html, body {
     background-color: #F7689D;
 } 
 
+/* CSS pentru elementele "humidity" și "temperature" */
+.humidity.low, .temperature.low {
+  color: blue; /* Exemplu de stil pentru valori scăzute */
+}
+
+.humidity.normal, .temperature.normal {
+  color: green; /* Exemplu de stil pentru valori normale */
+}
+
+.humidity.high, .temperature.high {
+  color: red; /* Exemplu de stil pentru valori ridicate */
+}
+
 
 
 
