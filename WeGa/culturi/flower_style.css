@@ -1,0 +1,124 @@
+html, body {
+    height: 100%;
+}
+  
+  body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #E0F1BB;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .containerF {
+    display: flex;
+    align-items: center;
+    max-width: 800px;
+    margin: 20px;
+    border: 2px solid #D0E69E;
+    border-radius: 10px;
+    overflow: hidden;
+  }
+  
+  .flower-image {
+    max-width: 500px;
+    height: auto;
+    border-radius: 10px;
+  }
+  
+  .flower-info {
+    padding: 20px;
+    background-color: #FEFFE2;
+    flex: 1;
+  }
+  
+  .flower-info h1 {
+    margin-top: 0;
+  }
+  
+  .flower-info p {
+    margin: 10px 0;
+  }
+  
+  .climate-info {
+    background-color: #fa92b1;
+    color: #fff;
+    padding: 20px;
+    flex: 0 0 200px;
+    text-align: center;
+  }
+  
+  .containerF button {
+    background-color: #FA92B1; 
+    color: #fff; 
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease; 
+}
+
+.containerF button:hover {
+    background-color: #F7689D;
+} 
+
+/* CSS pentru elementele "humidity" și "temperature" */
+.low-message {
+  color: blue;
+}
+
+.high-message {
+  color: red;
+}
+
+.normal-message {
+  color: black;
+}
+
+
+
+
+/*-------------------------HEADER------------------------*/
+header {
+	background: #fa92b1; 
+    color: #fff;
+	padding: 10px 0;
+	position: fixed; 
+	top: 0; 
+	width: 100%; 
+	z-index: 1000; 
+}
+	
+header .container {
+    display: flex;
+    justify-content: space-between; 
+    align-items: center; 
+    width: 80%; 
+    margin: auto; 
+    padding: 10px; 
+}
+	
+	header h1 {
+		font-size: 1.5em;
+	}
+	
+	nav ul {
+		list-style: none;
+	}
+	
+	nav ul li {
+		display: inline;
+		margin-right: 20px;
+	}
+	
+	nav ul li a {
+		color: #fff;
+		text-decoration: none;
+	}
+	
+	nav ul li a:hover {
+		text-decoration: underline;
+	}

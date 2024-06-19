@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Narcise</title>
+  <link rel="stylesheet" href="../flower_style.css">
+</head>
+<body>
+
+  <header>
+    <div class="container">
+        <h1>WebGardening</h1>
+        <nav>
+          <ul>
+            <li><a href="../../Acasa.html">Acasă</a></li>
+            <li><a href="../../specii_flori.html">Specii Flori</a></li>
+            <li><a href="../../contact.html">Contact</a></li>
+            <li><a href="../../admin/admin.html">Admin</a></li>
+            <li><a href="../../login/login.html">Conectare</a></li>
+            <li><a href="../culturi.html">Culturi</a></li>
+        </ul>
+        </nav>
+    </div>
+  </header>
+
+  <img src="imagineNarci.php" alt="Narcise" class="flower-image" id="dynamic-image">
+  
+  
+  <div class="containerF">
+    <div class="flower-info">
+      <h1>Narcise</h1>
+      <p>Umiditatea solului: <span id="humidity">-</span> (<span id="humidity-message"></span>)</p>
+      <p>Temperatura ambientală: <span id="temperature">-</span> (<span id="temperature-message"></span>)</p>
+      <form id="irrigate-form" method="post">
+        <input type="hidden" name="reset" value="true">
+        <button type="button" onclick="irrigateFlowers()">Udă florile</button>
+    </form>
+    </div>
+   </div>
+
+
+   <script>
+    function irrigateFlowers() {
+      // Setează manual valorile la 50 pentru umiditate și 18 pentru temperatură
+      document.getElementById("humidity").textContent = "50%";
+      document.getElementById("humidity-message").textContent = "normală";
+      document.getElementById("humidity-message").className = "normal-message";
+      document.getElementById("temperature").textContent = "15°C";
+      document.getElementById("temperature-message").textContent = "normală";
+      document.getElementById("temperature-message").className = "normal-message";
+    }
+
+    // Funcție pentru actualizarea imaginii la fiecare minut
+    function updateImage() {
+      const imageElement = document.getElementById("dynamic-image");
+      const timestamp = new Date().getTime(); // current timestamp to avoid caching issues
+      imageElement.src = 'imagineNarci.php?' + timestamp;
+    }
+
+    // Funcție pentru actualizarea valorilor de umiditate și temperatură la întâmplare
+    function updateValues() {
+      fetch('update_values.php')
+        .then(response => response.json())
+        .then(data => {
+          document.getElementById("humidity").textContent = data.humidity + "%";
+          document.getElementById("humidity-message").textContent = data.humidityMessage;
+          document.getElementById("humidity-message").className = data.humidityMessageClass;
+          document.getElementById("temperature").textContent = data.temperature + "°C";
+          document.getElementById("temperature-message").textContent = data.temperatureMessage;
+          document.getElementById("temperature-message").className = data.temperatureMessageClass;
+        })
+        .catch(error => console.error('Error fetching values:', error));
+    }
+
+    // Actualizarea inițială a valorilor și a imaginii
+    updateImage();
+    updateValues();
+
+    // Actualizarea valorilor și a imaginii o dată la fiecare minut
+    setInterval(() => {
+      updateImage();
+      updateValues();
+    }, 60000); // 60000 milisecunde = 1 minut
+  </script>
+</body>
+</html>

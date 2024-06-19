@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin - Mesaje Contact</title>
+    <link rel="stylesheet" href="admin.css">
+    <link rel="stylesheet" href="../styles.css">
+   
+</head>
+<body>
+
+    <header>
+        <div class="container">
+            <h1>WebGardening</h1>
+            <nav>
+              <ul>
+                <li><a href="../Acasa.html">Acasă</a></li>
+                <li><a href="../Specii_flori.html">Specii Flori</a></li>
+                <li><a href="../Contact.html">Contact</a></li>
+                <li><a href="admin.html">Admin</a></li>
+                <li><a href="../login/login.html">Conectare</a></li>
+                <li><a href="../culturi/culturi.html">Culturi</a></li>
+            </ul>
+            </nav>
+        </div>
+      </header>
+
+    <div class="container">
+        <section>
+            <h2>Mesaje de Contact</h2>
+            <div id="messages"></div>
+        </section>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            fetch('admin.php')
+                .then(response => response.json())
+                .then(data => {
+                    const messagesContainer = document.getElementById('messages');
+                    if (data.messages.length > 0) {
+                        data.messages.forEach(message => {
+                            const messageDiv = document.createElement('div');
+                            messageDiv.className = 'message-container';
+
+                            const messageHeader = document.createElement('div');
+                            messageHeader.className = 'message-header';
+                            messageHeader.innerHTML = `<span>Nume: ${message.nume}</span><br>
+                                                       <span>Email: ${message.email}</span><br>
+                                                       <span>Telefon: ${message.telefon}</span>`;
+
+                            const messageBody = document.createElement('div');
+                            messageBody.className = 'message-body';
+                            messageBody.innerText = message.mesaj;
+
+                            messageDiv.appendChild(messageHeader);
+                            messageDiv.appendChild(messageBody);
+                            messagesContainer.appendChild(messageDiv);
+                        });
+                    } else {
+                        messagesContainer.innerHTML = "<p>Nu există mesaje de contact.</p>";
+                    }
+                })
+                .catch(error => console.error('Error:', error));
+        });
+    </script>
+
+</body>
+</html>
