@@ -25,22 +25,32 @@
       </header>
     
 
-<div class="container">
-    <section>
-        <h2>Specii Flori</h2>
-        <p>Selectează o floare din lista de mai jos:</p>
-        <select id="specii">
-            <option value="zambila">Zambilă</option>
-            <option value="lalea">Lalea</option>
-            <option value="narcisa">Narcisă</option>
-            <option value="iris">Iris</option>
-            <option value="bujor">Bujor</option>
-            
-        </select>
-        <button onclick="afiseazaSpecia()">Selectează</button>
-        <div id="rezultat"></div>
-    </section>
-</div>
+      <div class="container">
+        <section>
+            <h2>Specii Flori</h2>
+            <p>Selectează o floare din lista de mai jos:</p>
+            <select id="specii">
+                <option value="zambila2.html">Zambilă</option>
+                <option value="lalea2.html">Lalea</option>
+                <option value="narcisa2.html">Narcisă</option>
+                <option value="iris2.html">Iris</option>
+                <option value="bujor2.html">Bujor</option>
+                <option value="crin2.html">Crin</option>
+                
+            </select>
+            <button onclick="afiseazaSpecia()">Selectează</button>
+            <div id="rezultat"></div>
+        </section>
+    </div>
+<script>
+    function afiseazaSpecia() {
+        var select = document.getElementById('specii');
+        var selectedValue = select.value;
+        if (selectedValue) {
+            window.location.href = selectedValue;
+        }
+    }
+</script>
 
 </body>
 </html>
