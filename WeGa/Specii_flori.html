@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Specii Flori</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <header>
+        <div class="container">
+            <h1>WebGardening</h1>
+            <nav>
+                <ul>
+                    <li><a href="Acasa.html">Acasă</a></li>
+                    <li><a href="specii_flori.html">Specii Flori</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                    <li><a href="admin/admin.html">Admin</a></li>
+                    <li><a href="login/login.html">Conectare</a></li>
+                    <li><a href="culturi/culturi.html">Culturi</a></li>
+                </ul>
+            </nav>
+        </div>
+      </header>
+    
+
+      <div class="container">
+        <section>
+            <h2>Specii Flori</h2>
+            <p>Selectează o floare din lista de mai jos:</p>
+            <select id="specii">
+                <option value="descrieri/zambila2.html">Zambilă</option>
+                <option value="descrieri/lalea2.html">Lalea</option>
+                <option value="descrieri/narcisa2.html">Narcisă</option>
+                <option value="descrieri/iris2.html">Iris</option>
+                <option value="descrieri/bujor2.html">Bujor</option>
+                <option value="descrieri/crin2.html">Crin</option>
+                
+            </select>
+            <button onclick="afiseazaSpecia()">Selectează</button>
+            <div id="rezultat"></div>
+        </section>
+    </div>
+<script>
+    function afiseazaSpecia() {
+        var select = document.getElementById('specii');
+        var selectedValue = select.value;
+        if (selectedValue) {
+            window.location.href = selectedValue;
+        }
+    }
+</script>
+
+</body>
+</html>

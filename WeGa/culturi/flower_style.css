@@ -1,0 +1,159 @@
+:root {
+  --main-background-color: #e0f1bb;
+  --header-color: #fa92b1;
+  --button-color: #fa92b1;
+}
+
+/* Resetăm marginile și padding-urile implicite */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  line-height: 1.6;
+  background-color: var(--main-background-color);
+  background-image: url('background.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  text-align: center; /* Centrează tot conținutul pe mijloc */
+}
+
+.container {
+  width: 80%;
+  margin: auto;
+  padding: 20px;
+}
+
+header {
+  background: var(--header-color);
+  color: #fff;
+  padding: 10px 0;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
+}
+
+header .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+header h1 {
+  font-size: 1.5em;
+}
+
+nav ul {
+  list-style: none;
+}
+
+nav ul li {
+  display: inline;
+  margin-right: 20px;
+}
+
+nav ul li a {
+  color: #fff;
+  text-decoration: none;
+}
+
+nav ul li a:hover {
+  text-decoration: underline;
+}
+
+/* Stilizăm secțiunea principală de conținut */
+.containerF {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: 120px; /* Adăugăm un spațiu mai mare pentru a face loc pentru header */
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.flower-info {
+  max-width: 800px;
+  width: 100%;
+  margin-bottom: 20px; /* Spatiu intre text si imagine */
+  overflow: hidden; /* Ascundem overflow-ul pentru a preveni afisarea marginii imaginii */
+  border-radius: 10px;
+  background-color: #FEFFE2;
+  padding: 20px;
+  box-sizing: border-box;
+  text-align: center;
+  overflow-y: auto; /* Facem containerul scrollabil pe verticala */
+  max-height: calc(100vh - 200px); /* Calculam inaltimea maxima pentru a fi scrollabil */
+}
+
+.flower-image {
+  border: none;
+  max-width: 100%;
+  height: auto;
+  border-radius: 10px;
+  margin-top: 20px; /* Spatiu intre text si imagine */
+}
+
+.flower-info h1 {
+  margin-top: 0;
+}
+
+.flower-info p {
+  margin: 10px 0;
+}
+
+/* Stilizăm butonul */
+.containerF button {
+  background-color: var(--button-color);
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s ease;
+  margin-top: 10px;
+}
+
+.containerF button:hover {
+  background-color: #F7689D;
+}
+
+/* Stilizăm mesajele pentru umiditate și temperatură */
+.low-message {
+  color: blue;
+}
+
+.high-message {
+  color: red;
+}
+
+.normal-message {
+  color: black;
+}
+
+/* Media Queries pentru ecrane mai mici */
+@media (max-width: 768px) {
+  header .container {
+    flex-direction: column;
+  }
+
+  nav ul {
+    flex-direction: column;
+    padding: 0;
+  }
+
+  nav ul li {
+    margin: 10px 0;
+    display: block;
+  }
+
+  .flower-info {
+    max-height: none; /* Eliminăm înălțimea maximă pentru a nu mai fi scrollabil pe ecrane mici */
+  }
+}

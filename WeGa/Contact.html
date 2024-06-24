@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<header>
+    <div class="container">
+        <h1>WebGardening</h1>
+        <nav>
+            <ul>
+                <li><a href="Acasa.html">Acasă</a></li>
+                <li><a href="specii_flori.html">Specii Flori</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="admin/admin.html">Admin</a></li>
+                <li><a href="login/login.html">Conectare</a></li>
+                <li><a href="culturi/culturi.html">Culturi</a></li>
+            </ul>
+        </nav>
+    </div>
+</header>
+
+<div class="container">
+    <section id="contact-section">
+        <h2>Contactează-ne</h2>
+        <p id="auth-message" style="display: none;">Trebuie să fiți conectat pentru a trimite un mesaj.</p>
+        <form id="contact-form" action="contact.php" method="post" style="display: none;">
+            <div class="form-group">
+                <label for="name">Nume:</label>
+                <input type="text" id="name" name="name" required>
+            </div>
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+            <div class="form-group">
+                <label for="phone">Telefon:</label>
+                <input type="tel" id="phone" name="phone" required>
+            </div>
+            <div class="form-group">
+                <label for="floare">Floare:</label>
+                <select id="floare" name="floare">
+                    <option value="" disabled selected>Selectează o floare</option>
+                    <option value="Zambilă">Zambilă</option>
+                    <option value="Lalea">Lalea</option>
+                    <option value="Narcisă">Narcisă</option>
+                    <option value="Iris">Iris</option>
+                    <option value="Bujor">Bujor</option>
+                    <option value="Crin">Crin</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="message">Mesaj:</label>
+                <textarea id="message" name="message" required></textarea>
+            </div>
+            <button type="submit">Trimite</button>
+        </form>
+    </section>
+</div>
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    fetch('user_info.php')
+        .then(response => response.json())
+        .then(data => {
+            if (data.authenticated) {
+                document.getElementById('contact-form').style.display = 'block';
+                document.getElementById('name').value = data.username;
+                document.getElementById('email').value = data.email;
+            } else {
+                document.getElementById('auth-message').style.display = 'block';
+            }
+        })
+        .catch(error => console.error('Error:', error));
+});
+</script>
+
+</body>
+</html>
