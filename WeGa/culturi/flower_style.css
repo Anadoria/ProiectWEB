@@ -1,13 +1,35 @@
-html, body {
-  height: 100%;
+:root {
+  --main-background-color: #e0f1bb;
+  --header-color: #fa92b1;
+  --button-color: #fa92b1;
+}
+
+/* Resetăm marginile și padding-urile implicite */
+* {
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
+}
+
+body {
   font-family: Arial, sans-serif;
-  background-color: #E0F1BB;
+  line-height: 1.6;
+  background-color: var(--main-background-color);
+  background-image: url('background.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  text-align: center; /* Centrează tot conținutul pe mijloc */
+}
+
+.container {
+  width: 80%;
+  margin: auto;
+  padding: 20px;
 }
 
 header {
-  background-color: #fa92b1;
+  background: var(--header-color);
   color: #fff;
   padding: 10px 0;
   position: fixed;
@@ -16,13 +38,10 @@ header {
   z-index: 1000;
 }
 
-.container {
+header .container {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  width: 80%;
-  margin: auto;
-  padding: 10px;
 }
 
 header h1 {
@@ -31,11 +50,10 @@ header h1 {
 
 nav ul {
   list-style: none;
-  padding: 0;
-  display: flex;
 }
 
 nav ul li {
+  display: inline;
   margin-right: 20px;
 }
 
@@ -48,16 +66,15 @@ nav ul li a:hover {
   text-decoration: underline;
 }
 
-.content {
+/* Stilizăm secțiunea principală de conținut */
+.containerF {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  height: 100%;
-  margin-top: 80px; /* Margin-top pentru a face loc header-ului */
+  margin-top: 120px; /* Adăugăm un spațiu mai mare pentru a face loc pentru header */
   padding: 20px;
   box-sizing: border-box;
-  text-align: center;
 }
 
 .flower-info {
@@ -90,8 +107,9 @@ nav ul li a:hover {
   margin: 10px 0;
 }
 
+/* Stilizăm butonul */
 .containerF button {
-  background-color: #FA92B1;
+  background-color: var(--button-color);
   color: #fff;
   border: none;
   padding: 10px 20px;
@@ -106,7 +124,7 @@ nav ul li a:hover {
   background-color: #F7689D;
 }
 
-/* CSS pentru elementele "humidity" și "temperature" */
+/* Stilizăm mesajele pentru umiditate și temperatură */
 .low-message {
   color: blue;
 }
@@ -119,7 +137,22 @@ nav ul li a:hover {
   color: black;
 }
 
+/* Media Queries pentru ecrane mai mici */
 @media (max-width: 768px) {
+  header .container {
+    flex-direction: column;
+  }
+
+  nav ul {
+    flex-direction: column;
+    padding: 0;
+  }
+
+  nav ul li {
+    margin: 10px 0;
+    display: block;
+  }
+
   .flower-info {
     max-height: none; /* Eliminăm înălțimea maximă pentru a nu mai fi scrollabil pe ecrane mici */
   }

@@ -1,14 +1,7 @@
 <?php
 session_start();
 
-// Verifică dacă utilizatorul este deja autentificat
-if (isset($_SESSION['login_user'])) {
-    header("Location: disclaimer.html");
-    exit();
-}
-
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    // Verifică autentificarea utilizatorului
     include '../database.php';
 
     if ($conn->connect_error) {
@@ -25,13 +18,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     if ($result->num_rows == 1) {
         $user = $result->fetch_assoc();
-        $_SESSION['login_user'] = $user['username']; // Setează variabila de sesiune pentru autentificare
-        $_SESSION['rol'] = $user['rol']; // Setează rolul utilizatorului în sesiune
+        $_SESSION['login_user'] = $user['username'];
+        $_SESSION['rol'] = $user['rol'];
 
-        // Setează un cookie pentru a menține autentificarea între sesiuni
-        setcookie('auth_token', 'valoare_unica', time() + (86400 * 30), "/"); // Valabil timp de 30 de zile
+        setcookie('auth_token', 'valoare_unica', time() + (86400 * 30), "/");
 
-        // Redirecționează utilizatorul în funcție de rol
         if ($user['rol'] === 'admin') {
             header("Location: ../admin/admin.html");
         } else {
@@ -39,7 +30,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         }
         exit();
     } else {
-        echo "Parolă incorectă sau utilizator inexistent.";
+        echo json_encode(["message" => "Parolă incorectă sau utilizator inexistent."]);
     }
 
     $stmt->close();

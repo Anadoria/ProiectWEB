@@ -14,15 +14,26 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $nume = $_POST['name'];
     $email = $_POST['email'];
     $telefon = $_POST['phone'];
+    $floare = $_POST['floare']; // Preluăm valoarea florii selectate
     $mesaj = $_POST['message'];
 
     // Crează și execută interogarea MySQL folosind interogări pregătite
-    $stmt = $conn->prepare("INSERT INTO contact (nume, email, telefon, mesaj) VALUES (?, ?, ?, ?)");
-    $stmt->bind_param("ssss", $nume, $email, $telefon, $mesaj);
+    $stmt = $conn->prepare("INSERT INTO contact (nume, email, telefon, floare, mesaj) VALUES (?, ?, ?, ?, ?)");
+    $stmt->bind_param("sssss", $nume, $email, $telefon, $floare, $mesaj);
 
     if ($stmt->execute()) {
-        header("Location: Acasa.html");
-        exit();
+        // Decrementăm stocul pentru floarea selectată
+        $updateStmt = $conn->prepare("UPDATE stocflori SET stoc = stoc - 1 WHERE  = ?");
+        $updateStmt->bind_param("s", $floare);
+
+        if ($updateStmt->execute()) {
+            header("Location: Acasa.html");
+            exit();
+        } else {
+            echo "Eroare la actualizarea stocului: " . $updateStmt->error;
+        }
+
+        $updateStmt->close();
     } else {
         echo "Eroare la salvarea datelor în baza de date: " . $stmt->error;
     }

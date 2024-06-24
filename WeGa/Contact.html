@@ -28,7 +28,7 @@
     <section id="contact-section">
         <h2>Contactează-ne</h2>
         <p id="auth-message" style="display: none;">Trebuie să fiți conectat pentru a trimite un mesaj.</p>
-        <form id="contact-form" action="submit_contact.php" method="post" style="display: none;">
+        <form id="contact-form" action="contact.php" method="post" style="display: none;">
             <div class="form-group">
                 <label for="name">Nume:</label>
                 <input type="text" id="name" name="name" required>
@@ -45,16 +45,14 @@
                 <label for="floare">Floare:</label>
                 <select id="floare" name="floare">
                     <option value="" disabled selected>Selectează o floare</option>
-                    <option value="zambila2.html">Zambilă</option>
-                    <option value="lalea2.html">Lalea</option>
-                    <option value="narcisa2.html">Narcisă</option>
-                    <option value="iris2.html">Iris</option>
-                    <option value="bujor2.html">Bujor</option>
-                    <option value="crin2.html">Crin</option>
-                
+                    <option value="Zambilă">Zambilă</option>
+                    <option value="Lalea">Lalea</option>
+                    <option value="Narcisă">Narcisă</option>
+                    <option value="Iris">Iris</option>
+                    <option value="Bujor">Bujor</option>
+                    <option value="Crin">Crin</option>
                 </select>
             </div>
-            
             <div class="form-group">
                 <label for="message">Mesaj:</label>
                 <textarea id="message" name="message" required></textarea>

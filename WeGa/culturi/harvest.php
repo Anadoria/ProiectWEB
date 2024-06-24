@@ -1,6 +1,6 @@
 <?php
 // Include fișierul pentru conectarea la baza de date
-include 'database.php';
+include '../database.php';
 
 // Verifică dacă floarea a fost trimisă prin metoda POST
 if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['flower'])) {
@@ -8,7 +8,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['flower'])) {
     $flower = $_POST['flower'];
 
     // Pregătește și execută interogarea pentru decrementarea stocului
-    $sql = "UPDATE stocflori SET stoc = stoc - 1 WHERE floare = ? AND stoc > 0";
+    $sql = "UPDATE stocflori SET stoc = stoc + 1 WHERE floare = ? AND stoc > 0";
     $stmt = $conn->prepare($sql);
     $stmt->bind_param("s", $flower);
     $stmt->execute();
@@ -27,7 +27,5 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['flower'])) {
 $conn->close();
 
 // Redirecționează înapoi la pagina anterioară
-header("Location: culturi/lalele/lalele.html");
+header("Location: culturi.html");
 exit();
-?>
-
