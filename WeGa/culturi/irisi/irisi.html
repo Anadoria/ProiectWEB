@@ -19,69 +19,84 @@
             <li><a href="../../admin/admin.html">Admin</a></li>
             <li><a href="../../login/login.html">Conectare</a></li>
             <li><a href="../culturi.html">Culturi</a></li>
-        </ul>
+          </ul>
         </nav>
     </div>
   </header>
 
-  <img src="imagineIris.php" alt="irisi" class="flower-image" id="dynamic-image">
   
-
   <div class="containerF">
     <div class="flower-info">
       <h1>Irisi</h1>
       <p>Umiditatea solului: <span id="humidity">-</span> (<span id="humidity-message"></span>)</p>
       <p>Temperatura ambientală: <span id="temperature">-</span> (<span id="temperature-message"></span>)</p>
-      <form id="irrigate-form" method="post">
-        <input type="hidden" name="reset" value="true">
-        <button type="button" onclick="irrigateFlowers()">Udă florile</button>
-    </form>
+      <div id="irrigate-container" style="display:none;">
+        <form id="irrigate-form" method="post">
+          <input type="hidden" name="reset" value="true">
+          <button type="button" onclick="irrigateFlowers()">Udă florile</button>
+        </form>
+      </div>
     </div>
+    <img src="imagineIris.php" alt="irisi" class="flower-image" id="dynamic-image">
+
   </div>
-</body>
 
+  <script>
+    function irrigateFlowers() {
+      document.getElementById("humidity").textContent = "50%";
+      document.getElementById("humidity-message").textContent = "normală";
+      document.getElementById("humidity-message").className = "normal-message";
+      document.getElementById("temperature").textContent = "20°C";
+      document.getElementById("temperature-message").textContent = "normală";
+      document.getElementById("temperature-message").className = "normal-message";
+    }
 
-<script>
-  function irrigateFlowers() {
-    // Setează manual valorile la 50 pentru umiditate și 18 pentru temperatură
-    document.getElementById("humidity").textContent = "50%";
-    document.getElementById("humidity-message").textContent = "normală";
-    document.getElementById("humidity-message").className = "normal-message";
-    document.getElementById("temperature").textContent = "20°C";
-    document.getElementById("temperature-message").textContent = "normală";
-    document.getElementById("temperature-message").className = "normal-message";
-  }
+    function updateImage() {
+      const imageElement = document.getElementById("dynamic-image");
+      const timestamp = new Date().getTime(); 
+      imageElement.src = 'imagineIris.php?' + timestamp;
+    }
 
-  // Funcție pentru actualizarea imaginii la fiecare minut
-  function updateImage() {
-    const imageElement = document.getElementById("dynamic-image");
-    const timestamp = new Date().getTime(); // current timestamp to avoid caching issues
-    imageElement.src = 'imagineIris.php?' + timestamp;
-  }
+    function updateValues() {
+      fetch('update_values.php')
+        .then(response => response.json())
+        .then(data => {
+          document.getElementById("humidity").textContent = data.humidity + "%";
+          document.getElementById("humidity-message").textContent = data.humidityMessage;
+          document.getElementById("humidity-message").className = data.humidityMessageClass;
+          document.getElementById("temperature").textContent = data.temperature + "°C";
+          document.getElementById("temperature-message").textContent = data.temperatureMessage;
+          document.getElementById("temperature-message").className = data.temperatureMessageClass;
+        })
+        .catch(error => console.error('Error fetching values:', error));
+    }
+    
+    function checkAdmin() {
+      fetch('../admin_check.php')
+        .then(response => {
+          if (!response.ok) {
+            throw new Error('Network response was not ok');
+          }
+          return response.json();
+        })
+        .then(data => {
+          if (data.isAdmin) {
+            document.getElementById('irrigate-container').style.display = 'block';
+          }
+        })
+        .catch(error => console.error('Error checking admin:', error));
+    }
 
-  // Funcție pentru actualizarea valorilor de umiditate și temperatură la întâmplare
-  function updateValues() {
-    fetch('update_values.php')
-      .then(response => response.json())
-      .then(data => {
-        document.getElementById("humidity").textContent = data.humidity + "%";
-        document.getElementById("humidity-message").textContent = data.humidityMessage;
-        document.getElementById("humidity-message").className = data.humidityMessageClass;
-        document.getElementById("temperature").textContent = data.temperature + "°C";
-        document.getElementById("temperature-message").textContent = data.temperatureMessage;
-        document.getElementById("temperature-message").className = data.temperatureMessageClass;
-      })
-      .catch(error => console.error('Error fetching values:', error));
-  }
-
-  // Actualizarea inițială a valorilor și a imaginii
-  updateImage();
-  updateValues();
-
-  // Actualizarea valorilor și a imaginii o dată la fiecare minut
-  setInterval(() => {
     updateImage();
     updateValues();
-  }, 60000); // 60000 milisecunde = 1 minut
-</script>
+    checkAdmin();
+
+    setInterval(() => {
+      updateImage();
+      updateValues();
+      checkAdmin();
+    }, 60000); // 60000 milisecunde = 1 minut
+  </script>
+
+</body>
 </html>

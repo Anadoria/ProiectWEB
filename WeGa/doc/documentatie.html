@@ -107,12 +107,12 @@
                 multe culturi concomitent, cât și pentru clienți interesați de achiziționarea de flori.
 
                 Comerciantul poate utiliza aplicația pentru a monitoriza și gestiona condițiile de creștere a plantelor, primind date de 
-                la senzori care măsoară umiditatea solului, temperatura ambientală și alte parametri relevanți. De asemenea, fluxul de imagini
-                din culturi poate oferi informații importante despre stadiul de dezvoltare al plantelor.
+                la senzori care măsoară umiditatea solului și temperatura ambientală. De asemenea, fluxul de imagini
+                din culturi poate oferi informații importante despre stagiul curent de dezvoltare al plantelor, aceste imagini sunt actualizate
+                constant pentru a oferi supraveghere non stop si control asupra momentului de cultivare.
 
                 Pentru clienți interesați de achiziționarea de flori, aplicația oferă posibilitatea de a-și exprima interesul pentru anumite
-                flori. Când florile de interes sunt gata pentru achiziție, clienții sunt notificați prin mesaje prin e-mail și notificări în 
-                cadrul unui browser web.
+                flori sau de a adresa intrebari direct cultivatorului. Când florile de interes sunt gata pentru achiziție, clienții sunt notificați prin mesaje via e-mail.
 
                 Astfel, aplicația poate fi folosită de către comercianți pentru gestionarea eficientă a culturilor de flori și optimizarea procesului 
                 de vânzare, precum și de către clienți pentru a găsi și achiziționa flori proaspete și sănătoase. Este important de menționat că 
@@ -141,10 +141,9 @@
             <p>Pagina principală este una de întâmpinare a utilizatorului introducându-l in aplicatia propriuzisă si familiarizându-l cu 
                funcționalitățile pe care le are la dispoziție.  
             </p>
-            <p> Creearea contului presupune introducerea unei adrese de email, a unui număr de telefon si a unei parole, urmând ca restul datelor
-                personale sa poată fi editate in pagina profilului utilizatorului.
+            <p> Creearea contului presupune introducerea unui nume,a unei adrese de email si a unei parole.
             </p>
-            <p> Toate functionalitățile sunt disponibile oricărui utilizator, fără a conta existența unui cont pe platformă, astfel încât
+            <p> Majoritatea functionalitățile sunt disponibile oricărui utilizator, fără a conta existența unui cont pe platformă, astfel încât
                 să fie ușor și convenabil de accesat pentru toată lumea.Cu toate acestea, crearea unui cont este necesară în procesul de achiziționare
                 a unei plante, astfel încât userul sa fie eficient notificat prin email de datele comenzii și disponibilitatea produsului.
             </p>
@@ -161,21 +160,21 @@
                 Cele 3 tipuri de utilizator care vor interacționa cu aplicația sunt: admin, vizitator, utilizator logat.
                 Vizitatorul va putea accesa pagina principală a aplicației și poate vedea informații generale despre
                 flori, dar și informații exacte despre culturile în creștere. Va putea vizualiza
-                datele
-                transmise de către senzori în timp real.
+                datele transmise de către senzori în timp real.
                 Un utilizator logat va avea aceleași drepturi pe care le are un simplu vizitator. În plus, va putea primi
-                email-uri cu alerte despre culturile de flori gata de a fi puse în comerț și datele comenzilor proprii. De asemenea, își va putea gestiona profilul.
+                email-uri cu alerte despre culturile de flori gata de a fi puse în comerț și datele comenzilor proprii. Totodata este necesara existenta 
+                unui cont pentru a puta accesa functionalitatile paginii de contact.
                 Adminul este practic un utilizator autorizat să poată gestiona baza de date a aplicației, să actualizeze
                 sau
                 să adauge date despre plantațiile deținute. Va putea gestiona sistemul de irigații din pagina "Culturi" pentru a putea
-                ușura procesul de îngrijire la distanță.
+                ușura procesul de îngrijire la distanță. Plus va putea vedea direct în aplicație mesajele utilizatorilor.
             </p>
         </section>
         <section id="mediu" role="doc-mediu">
             <h3>2.4 Mediul de operare</h3>
             <p>
                 Aplicația poate fi accesată din browser, atât desktop, cât și mobile, având un design responsive. Pentru
-                stocarea datelor necesare aplicației folosim o bază de date (SQLite).
+                stocarea datelor necesare aplicației folosim o bază de date (mySQL).
             </p>
         </section>
         <section id="constrangeri" role="doc-constrangeri">
@@ -204,7 +203,7 @@
                 </li>
                 <li>să acceseze paginile Acasă, Contact, Specii Flori și Culturi 
                 </li>
-                <li>să trimită un email direct către admin din pagina Contact,
+                <li>să trimită un mesaj direct către admin din pagina Contact,
                 </li>
                 <li>să vizualizeze toate speciile de flori disponibile si sa afle detalii despre acestea,
                 </li>
@@ -222,7 +221,8 @@
             <li> 4.3 <a href="#speciiFlori"> Pagina de Specii de Flori </a></li>
             <li> 4.4 <a href="#loginPage"> Pagina de Login </a></li>
             <li> 4.5 <a href="#registerPage"> Pagina de Sign up </a></li>
-            <li> 4.5 <a href="#culturi"> Pagina de Culturi </a></li>
+            <li> 4.6 <a href="#culturi"> Pagina de Culturi </a></li>
+            <li> 4.7 <a href="#admin"> Pagina de Admin </a></li>
 
             <section id="paginaPrincipala" role="doc-paginaPrincipala">
                 <h3>4.1 Pagina Principală </h3>
@@ -278,8 +278,16 @@
                 <p>
                     Pagina de Culturi ofera date in timp real despre condițiile de creștere a florilor. Pe langa un flux de imagini se transmit si 
                     date in privința temperaturii ambientale și a umidității solului, valori transmise de către senzori. Orice utilizator poate vedea 
-                    aceste date, însă doar adminul va avea acces la un buton ce trimite la reglarea sistemului de irigații. Adminul primeste notificări
-                    la fiecare valoare anormală pentru a se asigura de bunastare a culturilor chiar și de la distanță.
+                    aceste date, însă doar adminul va avea acces la un buton ce trimite la reglarea sistemului de irigații. Pe langa intretinerea culturii,
+                    adminul poate actualiza si starea stocului(cultivare/plantare).
+                </p>
+            </section>
+
+            <section id="admin" role="doc-admin">
+                <h3>4.6 Pagina de Admin</h3>
+                <p>
+                    Pagina de admin primeste notificari in privinta mesajelor trimise de catre clienti fie ele informative, fie de achizitionare. Adminul
+                    poate vedea toate informatiile clientului si utiliza datele respective pentru a-i răspunde.
                 </p>
             </section>
         </section>

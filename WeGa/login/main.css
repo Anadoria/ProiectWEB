@@ -1,27 +1,30 @@
-body{
-    margin: 0;
-    padding: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-    font-family: 'Ubuntu', sans-serif;
-    background: #D0E69E;
-}
-.main{
+body {
+	margin: 0;
+	padding: 0;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	min-height: 100vh;
+	font-family: 'Ubuntu', sans-serif;
+	background: #D0E69E;
+  }
+
+  .main {
 	width: 350px;
 	height: 500px;
 	overflow: hidden;
 	background: #E0F1BB;
 	border-radius: 10px;
 	box-shadow: 5px 20px 50px #000;
-}
+	min-width: 350px; /* Min width pentru a preveni micșorarea */
+	min-height: 500px; /* Min height pentru a preveni micșorarea */
+  }
 
-#chk{
+  #chk {
 	display: none;
-}
+  }
 
-label{
+  label {
 	color: #E0F1BB;
 	font-size: 2.3em;
 	justify-content: center;
@@ -30,8 +33,9 @@ label{
 	font-weight: bold;
 	cursor: pointer;
 	transition: .5s ease-in-out;
-}
-input{
+  }
+
+  input {
 	width: 60%;
 	height: 20px;
 	background: #FeFFe2;
@@ -42,9 +46,9 @@ input{
 	border: none;
 	outline: none;
 	border-radius: 5px;
-}
+  }
 
-button{
+  button {
 	width: 60%;
 	height: 40px;
 	margin: 10px auto;
@@ -60,61 +64,32 @@ button{
 	border-radius: 5px;
 	transition: .2s ease-in;
 	cursor: pointer;
-}
-button:hover{
+  }
+
+  button:hover {
 	outline: 2px solid white;
 	background: #FA92B1;
-}
+  }
 
-#chk:checked ~ .login{
+  #chk:checked ~ .login {
 	transform: translateY(-500px);
-}
-#chk:checked ~ .login label{
-	transform: scale(1);	
-}
-#chk:checked ~ .signup label{
+  }
+
+  #chk:checked ~ .login label {
+	transform: scale(1);
+  }
+
+  #chk:checked ~ .signup label {
 	color: whitesmoke;
 	transform: scale(.6);
-}
+  }
 
-/*-------------------------HEADER------------------------*/
-header {
-	background: #fa92b1; 
-    color: #fff;
-	padding: 10px 0;
-	position: fixed; 
-	top: 0; 
-	width: 100%; 
-	z-index: 1000; 
-}
-	
-header .container {
-    display: flex;
-    justify-content: space-between; 
-    align-items: center; 
-    width: 80%; 
-    margin: auto; 
-    padding: 10px; 
-}
-	
-	header h1 {
-		font-size: 1.5em;
+  /* Menține dimensiunea containerului principal */
+  @media (max-width: 768px) {
+	.main {
+	  width: 350px;
+	  height: 500px;
+	  min-width: 350px; /* Min width pentru a preveni micșorarea */
+	  min-height: 500px; /* Min height pentru a preveni micșorarea */
 	}
-	
-	nav ul {
-		list-style: none;
-	}
-	
-	nav ul li {
-		display: inline;
-		margin-right: 20px;
-	}
-	
-	nav ul li a {
-		color: #fff;
-		text-decoration: none;
-	}
-	
-	nav ul li a:hover {
-		text-decoration: underline;
-	}
+  }

@@ -24,23 +24,25 @@
     </div>
   </header>
 
-  <img src="imagineCrin.php" alt="crini" class="flower-image" id="dynamic-image">
   
   <div class="containerF">
     <div class="flower-info">
       <h1>Crini</h1>
       <p>Umiditatea solului: <span id="humidity" class="humidity">-</span> (<span id="humidity-message"></span>)</p>
       <p>Temperatura ambientală: <span id="temperature" class="temperature">-</span> (<span id="temperature-message"></span>)</p>
-      <form id="irrigate-form" method="post">
-        <input type="hidden" name="reset" value="true">
-        <button type="button" onclick="irrigateFlowers()">Udă florile</button>
-    </form>
+      <div id="irrigate-container" style="display:none;">
+        <form id="irrigate-form" method="post">
+          <input type="hidden" name="reset" value="true">
+          <button type="button" onclick="irrigateFlowers()">Udă florile</button>
+        </form>
+      </div>
     </div>
+    <img src="imagineCrin.php" alt="crini" class="flower-image" id="dynamic-image">
+
   </div>
 
   <script>
     function irrigateFlowers() {
-      // Setează manual valorile la 50 pentru umiditate și 18 pentru temperatură
       document.getElementById("humidity").textContent = "50%";
       document.getElementById("humidity-message").textContent = "normală";
       document.getElementById("humidity-message").className = "normal-message";
@@ -49,14 +51,12 @@
       document.getElementById("temperature-message").className = "normal-message";
     }
 
-    // Funcție pentru actualizarea imaginii la fiecare minut
     function updateImage() {
       const imageElement = document.getElementById("dynamic-image");
-      const timestamp = new Date().getTime(); // current timestamp to avoid caching issues
+      const timestamp = new Date().getTime(); 
       imageElement.src = 'imagineCrin.php?' + timestamp;
     }
 
-    // Funcție pentru actualizarea valorilor de umiditate și temperatură la întâmplare
     function updateValues() {
       fetch('update_values.php')
         .then(response => response.json())
@@ -70,16 +70,32 @@
         })
         .catch(error => console.error('Error fetching values:', error));
     }
+    
+    function checkAdmin() {
+      fetch('../admin_check.php')
+        .then(response => {
+          if (!response.ok) {
+            throw new Error('Network response was not ok');
+          }
+          return response.json();
+        })
+        .then(data => {
+          if (data.isAdmin) {
+            document.getElementById('irrigate-container').style.display = 'block';
+          }
+        })
+        .catch(error => console.error('Error checking admin:', error));
+    }
 
-    // Actualizarea inițială a valorilor și a imaginii
     updateImage();
     updateValues();
+    checkAdmin();
 
-    // Actualizarea valorilor și a imaginii o dată la fiecare minut
     setInterval(() => {
       updateImage();
       updateValues();
-    }, 60000); // 60000 milisecunde = 1 minut
+      checkAdmin();
+    }, 60000);
   </script>
 
 </body>
