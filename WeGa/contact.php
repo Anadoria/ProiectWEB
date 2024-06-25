@@ -14,7 +14,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $nume = $_POST['name'];
     $email = $_POST['email'];
     $telefon = $_POST['phone'];
-    $floare = isset($_POST['floare']) ? $_POST['floare'] : null; // Preluăm valoarea florii selectate sau null
+    $floare = $_POST['floare'] === 'Nimic' ? null : $_POST['floare']; // Setăm floare la null dacă valoarea este Nimic
     $mesaj = $_POST['message'];
 
     // Crează și execută interogarea MySQL folosind interogări pregătite
@@ -49,4 +49,3 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $stmt->close();
     $conn->close();
 }
-?>
