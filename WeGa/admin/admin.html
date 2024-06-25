@@ -6,15 +6,14 @@
     <title>Admin - Mesaje Contact</title>
     <link rel="stylesheet" href="admin.css">
     <link rel="stylesheet" href="../styles.css">
-   
 </head>
 <body>
 
-    <header>
-        <div class="container">
-            <h1>WebGardening</h1>
-            <nav>
-              <ul>
+<header>
+    <div class="container">
+        <h1>WebGardening</h1>
+        <nav>
+            <ul>
                 <li><a href="../Acasa.html">Acasă</a></li>
                 <li><a href="../Specii_flori.html">Specii Flori</a></li>
                 <li><a href="../Contact.html">Contact</a></li>
@@ -22,49 +21,78 @@
                 <li><a href="../login/login.html">Conectare</a></li>
                 <li><a href="../culturi/culturi.html">Culturi</a></li>
             </ul>
-            </nav>
-        </div>
-      </header>
-
-    <div class="container">
-        <section>
-            <h2>Mesaje de Contact</h2>
-            <div id="messages"></div>
-        </section>
+        </nav>
     </div>
+</header>
 
-    <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            fetch('admin.php')
-                .then(response => response.json())
-                .then(data => {
-                    const messagesContainer = document.getElementById('messages');
-                    if (data.messages.length > 0) {
-                        data.messages.forEach(message => {
-                            const messageDiv = document.createElement('div');
-                            messageDiv.className = 'message-container';
+<div class="container">
+    <section>
+        <h2>Mesaje de Contact</h2>
+        <div id="messages"></div>
+    </section>
+</div>
 
-                            const messageHeader = document.createElement('div');
-                            messageHeader.className = 'message-header';
-                            messageHeader.innerHTML = `<span>Nume: ${message.nume}</span><br>
-                                                       <span>Email: ${message.email}</span><br>
-                                                       <span>Telefon: ${message.telefon}</span>`;
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        fetch('admin.php')
+            .then(response => response.json())
+            .then(data => {
+                const messagesContainer = document.getElementById('messages');
+                if (data.messages.length > 0) {
+                    data.messages.forEach(message => {
+                        const messageDiv = document.createElement('div');
+                        messageDiv.className = 'message-container';
 
-                            const messageBody = document.createElement('div');
-                            messageBody.className = 'message-body';
-                            messageBody.innerText = message.mesaj;
+                        const messageHeader = document.createElement('div');
+                        messageHeader.className = 'message-header';
+                        messageHeader.innerHTML = `<span>Nume: ${message.nume}</span><br>
+                                                   <span>Email: ${message.email}</span><br>
+                                                   <span>Telefon: ${message.telefon}</span>`;
 
-                            messageDiv.appendChild(messageHeader);
-                            messageDiv.appendChild(messageBody);
-                            messagesContainer.appendChild(messageDiv);
-                        });
-                    } else {
-                        messagesContainer.innerHTML = "<p>Nu există mesaje de contact.</p>";
-                    }
-                })
-                .catch(error => console.error('Error:', error));
-        });
-    </script>
+                        const messageBody = document.createElement('div');
+                        messageBody.className = 'message-body';
+                        messageBody.innerText = message.mesaj;
+
+                        const deleteButton = document.createElement('button');
+                        deleteButton.innerText = 'Șterge';
+                        deleteButton.onclick = function() {
+                            deleteMessage(message.id);
+                        };
+
+                        messageDiv.appendChild(messageHeader);
+                        messageDiv.appendChild(messageBody);
+                        messageDiv.appendChild(deleteButton);
+                        messagesContainer.appendChild(messageDiv);
+                    });
+                } else {
+                    messagesContainer.innerHTML = "<p>Nu există mesaje de contact.</p>";
+                }
+            })
+            .catch(error => console.error('Error:', error));
+    });
+
+    function deleteMessage(id) {
+        if (confirm('Sigur doriți să ștergeți acest mesaj?')) {
+            fetch('admin.php', {
+                method: 'DELETE',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded'
+                },
+                body: 'id=' + id
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    alert('Mesajul a fost șters.');
+                    location.reload();
+                } else {
+                    alert('A apărut o problemă la ștergerea mesajului.');
+                }
+            })
+            .catch(error => console.error('Error:', error));
+        }
+    }
+</script>
 
 </body>
 </html>

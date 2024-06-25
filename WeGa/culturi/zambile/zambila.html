@@ -37,7 +37,7 @@
           <button type="button" onclick="irrigateFlowers()">Udă florile</button>
         </form>
         <form action="../harvest.php" method="post" style="margin-top: 10px;">
-          <input type="hidden" name="flower" value="zambile">
+          <input type="hidden" name="flower" value="Zambilă">
           <button type="submit">Recoltează</button>
       </form>
       
@@ -88,6 +88,7 @@
         .then(data => {
           if (data.isAdmin) {
             document.getElementById('irrigate-container').style.display = 'block';
+            
           }
         })
         .catch(error => console.error('Error checking admin:', error));
